@@ -1,28 +1,30 @@
-<?php include 'inc/header.php'; ?>
+<?php include 'inc/header.php'; 
 
+$sql = "SELECT * FROM feedback;";
+$result = mysqli_query($conn, $sql);
+$feedbacks = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+?>
 
 <main>
   <div class="container d-flex flex-column align-items-center">
    
     <h2>Feedback</h2>
 
-    <div class="card my-3">
-     <div class="card-body">
-       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta molestias animi earum eos dolorem repellat a quibusdam, aperiam vero repellendus voluptatibus natus deserunt sed doloribus inventore, totam labore maxime perferendis!
-     </div>
+    <?php if(empty($feedbacks)):?>
+      <p class="lead my-3">There is no feedback</p>
+    <?php endif; ?>
+<?php foreach($feedbacks as $feedback): ?>
+    <div class="card my-3 w-75">
+     <div class="card-body text-center">
+        <?php echo $feedback['body'];?>
+      <div class="text-secondary mt-2">
+        <?php echo $feedback['name'];?> on <?php echo $feedback['date'];?>
+      </div>
+    </div>
    </div>
+<?php endforeach; ?>
 
-   <div class="card my-3">
-     <div class="card-body">
-       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta molestias animi earum eos dolorem repellat a quibusdam, aperiam vero repellendus voluptatibus natus deserunt sed doloribus inventore, totam labore maxime perferendis!
-     </div>
-   </div>
-
-   <div class="card my-3">
-     <div class="card-body">
-       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta molestias animi earum eos dolorem repellat a quibusdam, aperiam vero repellendus voluptatibus natus deserunt sed doloribus inventore, totam labore maxime perferendis!
-     </div>
-   </div>
   </div>
 </main>
 
