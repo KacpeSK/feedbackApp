@@ -1,0 +1,1 @@
+Just a simple skeleton project to create a feedback app - it might be used as a component in future projects to provide messaging functionality (feedback as, comments, direct messaging, tracking tickets and possibly more.). This app was created to extend my knowledge in messaging concepts. It might get updates in future once the functionality is required in other projects.
